@@ -10,7 +10,8 @@ public class Operator {// Single-Responsibility principle создал отде�
         this.persons = persons;
     }
 
-    public int showMenu() throws InterruptedException {
+    public void showMenu() throws InterruptedException {
+        int myChoice = persons.size(); //Использую размер списка переданного, как аргумент
         System.out.println("Это меню, которое поможет вам выбрать нужную службу!");
         Thread.sleep(2000);
         System.out.println("Это список людей, которые могут вам помочь:");
@@ -20,12 +21,12 @@ public class Operator {// Single-Responsibility principle создал отде�
             persons.get(i).act();
             System.out.println("Обратиться?(Да/Нет)");
             String answer = scanner.next();
-            if (answer.equalsIgnoreCase("Да")) return i;
+            if (answer.equalsIgnoreCase("Да")) {
+                myChoice = i;
+                break;
+            }
         }
-        return persons.size(); //Использую размер списка переданного, как аргумент
-    }
-
-    public void resultOperation(int myChoice) {
+        
         if (myChoice == persons.size()) { //Использую размер списка, чтобы в будущем можно было расширить возможности
             System.out.println("Значит вам и не нужна помощь!!!");
         } else {
@@ -55,5 +56,5 @@ public class Operator {// Single-Responsibility principle создал отде�
                 }
             }
         }
-    }
+}
 }

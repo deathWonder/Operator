@@ -14,8 +14,6 @@ public class Main {
 
         Operator operator = new Operator(persons);
 
-        int myChoice = operator.showMenu();
-
-        operator.resultOperation(myChoice);
+        operator.showMenu();
     }
 }
